@@ -51,10 +51,10 @@ public class TestUnit extends TestCase{
 	
 	// CAS 6 : a-->b b-->c, a-->d et d--> c impossible ajout d
 	public void testCas6() throws Exception {
-		a.addSousTraitant(b);  
+		a.addSousTraitant(b); 
+		c.addSousTraitant(d);
 		b.addSousTraitant(c);
 		a.addSousTraitant(d);
-		c.addSousTraitant(d);
 
 	}
 }
