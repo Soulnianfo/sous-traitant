@@ -49,12 +49,21 @@ public class TestUnit extends TestCase{
 		a.addSousTraitant(d);
 	}
 	
-	// CAS 6 : a-->b b-->c, a-->d et d--> c impossible ajout d
+	// CAS 6 : a-->b c-->d, b-->c et a-->c impossible ajout d
 	public void testCas6() throws Exception {
 		a.addSousTraitant(b); 
 		c.addSousTraitant(d);
 		b.addSousTraitant(c);
 		a.addSousTraitant(d);
 
+	}
+
+	// ce test doit donner le même résultat que testCas6
+	// CAS 7 : a-->b b-->c, a-->d et d--> c impossible ajout d
+	public void testCas7() throws Exception {
+		a.addSousTraitant(b);
+		b.addSousTraitant(c);
+		a.addSousTraitant(d);
+		c.addSousTraitant(d);
 	}
 }

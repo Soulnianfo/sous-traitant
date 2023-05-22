@@ -5,9 +5,9 @@ import java.util.Set;
 
 public class SousTraitant {
 	
-	String code;  
+	private String code;
 	
-	Set<SousTraitant> lesSousTraitants = new HashSet<SousTraitant>();
+	private Set<SousTraitant> listSousTraitant = new HashSet<SousTraitant>();
 	
 	
 	public SousTraitant(String pCode) {
@@ -16,17 +16,17 @@ public class SousTraitant {
 	
 	
 	public void addSousTraitant(SousTraitant pSoustraitant) throws Exception {
-		
-		if(!existe(this.lesSousTraitants, pSoustraitant)
+
+		if(!existe(this.listSousTraitant, pSoustraitant)
 				&& !ifExisteInStEnParam(pSoustraitant)) {
-			this.lesSousTraitants.add(pSoustraitant);
+			this.listSousTraitant.add(pSoustraitant);
 		}else {
 			throw new Exception("Impossible d'ajouter le sous traitant "+pSoustraitant.code);
 		}
 	}
 	
 	/**
-	 * vérifie si pSoustraitant n'existe pas déjà comme soustraintant dans pLesSousTraitants ou dans l'un des enfants de pLesSousTraitants
+	 * vï¿½rifie si pSoustraitant n'existe pas dï¿½jï¿½ comme soustraintant dans pLesSousTraitants ou dans l'un des enfants de pLesSousTraitants
 	 * @param pLesSousTraitants
 	 * @param pSoustraitant
 	 * @return
@@ -40,29 +40,31 @@ public class SousTraitant {
 		}
 		
 		for(SousTraitant sousTr: pLesSousTraitants) {
-			return existe(sousTr.lesSousTraitants, pSoustraitant);
+			return existe(sousTr.listSousTraitant, pSoustraitant);
 		}
 		
 		return false;
 	}
 	
 	/**
-	 * vérifie si le courant soustraintant n'existe pas déjà comme soustraitant de pSoustraitant
+	 * vï¿½rifie si le courant soustraintant n'existe pas dï¿½jï¿½ comme soustraitant de pSoustraitant
 	 * @param pSoustraitant
 	 * @return
 	 * @throws Exception
 	 */
 	
 	public boolean ifExisteInStEnParam(SousTraitant pSoustraitant) throws Exception {
-		if(pSoustraitant.lesSousTraitants.contains(this)) {
+		if(pSoustraitant.listSousTraitant.contains(this)) {
 			return true;
 		}
 		
-		for(SousTraitant sousTr: pSoustraitant.lesSousTraitants) {
-			return existe(sousTr.lesSousTraitants, this);
+		for(SousTraitant sousTr: pSoustraitant.listSousTraitant) {
+			return existe(sousTr.listSousTraitant, this);
 		}
 
 		return false;
 	}
+
+
 
 }
