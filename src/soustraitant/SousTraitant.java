@@ -6,7 +6,8 @@ import java.util.Set;
 public class SousTraitant {
 	
 	private String code;
-	
+
+	private Set<String> clients = new HashSet<>();
 	private Set<SousTraitant> listSousTraitant = new HashSet<SousTraitant>();
 	
 	
